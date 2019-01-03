@@ -1,0 +1,4 @@
+#This file discribes the layout of the objects in the map
+#Use relative path from execution point
+#POS, ROT not yet implomented
+model ./models/sphere.obj
