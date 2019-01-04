@@ -1,4 +1,5 @@
 #This file discribes the layout of the objects in the map
 #Use relative path from execution point
-#POS, ROT not yet implomented
-model ./models/sphere.obj
+#Rotaitions are being worked on
+#object ./models/sphere.obj 1,1,1 0,0,0 1,1,1
+object ./models/magic_cube.obj 1,1,1 0,0,0 .5,.5,.5

@@ -1,3 +1,6 @@
+import numpy as np
+from pyrr import Vector3
+
 class Face:
     def __init__(self, vert, textc, norm):
         self.vertices = vert
@@ -11,8 +14,13 @@ class Object:
         self.faces = faces
         self.texture_cordinates = texture_cordinates
         self.normals = normals
+        
         self.name = name
         self.path = path
+
+        #self.pos = pos
+        #self.rot = rot
+        #self.scale = scale
 
         
 def load(path):
@@ -39,8 +47,6 @@ def load(path):
                 _vertices = [int(parts[0].split("/")[0])-1, int(parts[1].split("/")[0])-1, int(parts[2].split("/")[0])-1]
                 _texture_cordinates = [int(parts[0].split("/")[1])-1, int(parts[1].split("/")[1])-1, int(parts[2].split("/")[1])-1]
                 _normals = [int(parts[0].split("/")[2])-1, int(parts[1].split("/")[2])-1, int(parts[2].split("/")[2])-1]
-                #print("ROUND: "+ str(i) + " || " + str(_texture_cordinates))
-                #i+=1
                 faces.append(Face(_vertices,_texture_cordinates,_normals))
                 
 
@@ -62,4 +68,6 @@ def load(path):
                 name = line[2:len(line)-1]
 
     return(Object(vertices, faces, texture_cordinates, normals,name,path))
-              
+
+#Test:          
+load("D:\\xd.obj")
