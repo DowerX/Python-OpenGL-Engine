@@ -1,5 +1,7 @@
-#This file discribes the layout of the objects in the map
+#This file discribes the layout of the game wolrd
 #Use relative path from execution point
-#Rotaitions are being worked on
-#object ./models/sphere.obj 1,1,1 0,0,0 1,1,1
+
+object ./models/sphere.obj 0,0,0 0,0,0 1,2,1
+#object ./models/magic_cube.obj 0,0,0 0,0,0 .5,.5,.5
 object ./models/magic_cube.obj 1,1,1 0,0,0 .5,.5,.5
+object ./models/magic_cube.obj -1,-1,-1 0,0,0 .5,.5,.5

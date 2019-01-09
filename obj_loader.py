@@ -1,5 +1,5 @@
-import numpy as np
-from pyrr import Vector3
+#import numpy as np
+#from pyrr import Vector3
 
 class Face:
     def __init__(self, vert, textc, norm):
@@ -70,4 +70,4 @@ def load(path):
     return(Object(vertices, faces, texture_cordinates, normals,name,path))
 
 #Test:          
-load("D:\\xd.obj")
+#load("D:\\xd.obj")

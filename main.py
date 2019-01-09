@@ -10,18 +10,18 @@ from pyrr import Quaternion, Matrix44, Vector3
 #import numpy as np
 
 
-print("\n")
+print("\nOpenGL Python engine")
 
 
 #Settings
-dev = True
-display = (800,600)
+dev = True          #Additional information in the console about things happening
+display = (640,480) #Drawing image size
 
-objects = []
+objects = []        #Contains all objects that had been loaded and can be drawn
 
 
 
-def modify(object_id,pos,rot,scale):
+def Modify(object_id,pos,rot,scale):
                 
     translation = Vector3()
     translation += pos
@@ -52,10 +52,8 @@ def Load_map(path):
                 
                 objects.append(obj.load(parts[0]))
 
-
-                #Transforming it by the given amount
                 rot = [0,0,0]
-                modify(len(objects)-1,[float(parts[1].split(",")[0]),float(parts[1].split(",")[1]), float(parts[1].split(",")[2])],rot,[float(parts[3].split(",")[0]),float(parts[3].split(",")[1]), float(parts[3].split(",")[2])])
+                Modify(len(objects)-1,[float(parts[1].split(",")[0]),float(parts[1].split(",")[1]), float(parts[1].split(",")[2])],rot,[float(parts[3].split(",")[0]),float(parts[3].split(",")[1]), float(parts[3].split(",")[2])])
 
                 if dev:
                     print("INFO: Loaded object with name '" + objects[len(objects)-1].name + "' from path '" + parts[0] + "'. Its position in the world is '" + str([float(parts[1].split(",")[0]),float(parts[1].split(",")[1]), float(parts[1].split(",")[2])]) + "' and its rotaition is '" + str(rot) + "'.")
@@ -75,10 +73,12 @@ def Render(otd):
     
     
 def Main():
+    #PyGame setup
     pygame.init()
     pygame.display.set_mode(display, HWSURFACE|OPENGL|DOUBLEBUF)
     pygame.display.set_caption("OpenGL engine test")
 
+    #OpenGL setup
     glMatrixMode(GL_MODELVIEW)
 
     glEnable(GL_LIGHTING)
@@ -92,13 +92,15 @@ def Main():
     gluPerspective(60, (display[0]/display[1]), 0.1, 20.0)
     glTranslate(0.0,0.0,-5)
 
+    #Custom setup, loading objects
     Load_map("./maps/test.map")
 
+    #Rendering loop, done once a frame
     while 1:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                quit()
+##        for event in pygame.event.get():
+##            if event.type == pygame.QUIT:
+##                pygame.quit()
+##                quit()
 
         glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
 
